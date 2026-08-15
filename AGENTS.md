@@ -99,13 +99,14 @@ frontmatter     when_to_use / do_not_use / version / last_updated
 
 ## 版本控制（git）
 
-规则库已纳入 git 管理（2026-08-15 初始化，仓库根目录 `/Users/eiravale/Desktop/Agent Rules/`，初始提交 f3f7b35，13 文件 1496 行；仓库级 user.name=eiravale，不动全局配置）。
+规则库已纳入 git 管理（2026-08-15 初始化，仓库根目录 `/Users/eiravale/Desktop/Agent Rules/`，初始提交 f3f7b35，13 文件 1496 行；仓库级 user.name=eiravale，不动全局配置）。远程仓库：`https://github.com/HaojieChen2003/agent-rules`（私有，origin/main），由 gh CLI 管理。
 
 1. **改动必提交**：每次修改规则文件后，必须 `git add` 相关文件并 `git commit`。commit message 格式：`<框架>: v<版本> <改动摘要>`（如 `math: v2.1.0 新增最后结果原则`）。
 2. **增量读取协议（速度关键）**：agent 读取规则前先 `git log --oneline` 检查自上次读取后的变更；有变更时只读 `git diff <上次版本> HEAD` 的差异行，其余用记忆缓存，不全量重读。
 3. **回滚**：单文件还原 `git checkout -- <文件>`；撤销某次提交 `git revert <版本>`；需要时查看历史 `git log --oneline`。
 4. **版本号与提交对齐**：frontmatter 的 `version` / `last_updated` 变更必须伴随一次 commit，二者不得脱节。
-5. 规则库内容以 git 记录为准，md 文件本身是工作副本；git 不联网、不推送到任何远程仓库。
+5. **提交后推送**：每次 commit 后 `git push` 到 origin（远程备份，防本机丢失）；多设备同步以 origin/main 为准，拉取 `git pull`。
+6. 规则库内容以 git 记录为准，md 文件本身是工作副本；远程为私有仓库。
 
 ## 维护约定
 
