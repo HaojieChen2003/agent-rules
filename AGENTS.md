@@ -105,7 +105,7 @@ frontmatter     when_to_use / do_not_use / version / last_updated
 2. **增量读取协议（速度关键）**：agent 读取规则前先 `git log --oneline` 检查自上次读取后的变更；有变更时只读 `git diff <上次版本> HEAD` 的差异行，其余用记忆缓存，不全量重读。
 3. **回滚**：单文件还原 `git checkout -- <文件>`；撤销某次提交 `git revert <版本>`；需要时查看历史 `git log --oneline`。
 4. **版本号与提交对齐**：frontmatter 的 `version` / `last_updated` 变更必须伴随一次 commit，二者不得脱节。
-5. **提交后推送**：每次 commit 后 `git push` 到 origin（远程备份，防本机丢失）；多设备同步以 origin/main 为准，拉取 `git pull`。
+5. **推送需用户同意**：`git commit` 在本地可随时执行；`git push` 到 origin **必须先征得用户明确同意**（说明本次推送内容与目的），未经同意不得推送。多设备同步以 origin/main 为准，拉取 `git pull` 不受此限。
 6. 规则库内容以 git 记录为准，md 文件本身是工作副本；远程为公开仓库（2026-08-15 由私有改为公开，用户明确要求）。
 
 ## 维护约定
