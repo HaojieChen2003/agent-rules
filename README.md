@@ -1,37 +1,39 @@
-# Agent Rules Skills — 四领域 Skill（主分支）
+# Agent Rules Skills — Four Domain Skills (Main Branch)
 
-本分支承载四套已拆分的独立可加载 Skill，按 `SKILL.md` 的 `description` 自动触发；规则库本体（Markdown 规则）已在子分支 `agent-rules-md` 独立管理，两边内容互不干涉。
+**Language:** [English](README.md) | [中文](README.zh-CN.md)
 
-## 目录结构
+This branch hosts the four split, independently loadable Skills, each auto-triggered by the `description` in its `SKILL.md`. The rule-base body (Markdown rules) is maintained separately on the `agent-rules-md` branch; the two branches do not interfere with each other.
+
+## Directory Structure
 
 ```text
-Skill/
+skill-trae/
 ├── skills/
-│   ├── math/              # 数学推导、验证、证明、笔记
+│   ├── math/              # Math derivation, verification, proofs, notes
 │   │   ├── SKILL.md
 │   │   └── references/optional/   # rigor / pde-galerkin / notes
-│   ├── latex/             # LaTeX 编译、排版、安全编辑
+│   ├── latex/             # LaTeX compilation, typesetting, safe editing
 │   │   ├── SKILL.md
 │   │   └── references/optional/   # compile / typography / beamer
-│   ├── coder/             # 编码、审查、Skill/插件开发
+│   ├── coder/             # Coding, review, Skill/plugin development
 │   │   ├── SKILL.md
 │   │   ├── references/optional/review.md
 │   │   └── GitHub操作手册.md
-│   └── calibre/           # 电子书库、元数据、批量写库
+│   └── calibre/           # E-book library, metadata, batch writing
 │       └── SKILL.md
 └── LICENSE                # MIT
 ```
 
-## 使用方式
+## Usage
 
-1. 安装到 Skill 目录（本机为 `~/.trae-cn/skills/`）后，Trae 通过 `SKILL.md` 的 description 对任务自动触发。
-2. 命中某一领域时加载对应 Skill 的 `SKILL.md`，并按需读取其 `references/optional/` 细分纪律。
-3. 触发指针精确性：同一任务描述应命中且仅命中一个领域 Skill；邻接场景按核心正确性风险判定主框架。
+1. After installing into the Skill directory (locally `~/.trae-cn/skills/`), Trae auto-triggers a Skill when a task matches its `SKILL.md` description.
+2. When a domain is matched, load its `SKILL.md` and read the relevant `references/optional/` sub-disciplines as needed.
+3. Trigger-pointer precision: a single task description should match one and only one domain Skill; adjacent cases are resolved by core correctness risk.
 
-## 授权
+## License
 
-MIT License，见 [LICENSE](LICENSE)。
+MIT License — see [LICENSE](LICENSE).
 
-## 与规则库本体（agent-rules-md）的关系
+## Relationship with the Rule Base (`agent-rules-md`)
 
-四套 Skill 与 `agent-rules-md` 子分支共用同一套领域边界与验收标准，Skill 承载可复用纪律，规则库负责路由与边界；内容互不重复维护。
+The four Skills and the `agent-rules-md` branch share the same domain boundaries and acceptance standards. The Skills carry reusable discipline; the rule base is responsible for routing and boundaries. Content is maintained independently, without duplication.
