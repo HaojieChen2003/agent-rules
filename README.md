@@ -1,45 +1,47 @@
-# Agent Rules — 个人领域行为准则库
+# Agent Rules — Personal Domain Rules Base
 
-这是一套面向 AI Agent 的、可版本化的个人领域规则。它不复制完整操作手册，而是沉淀会长期影响判断、执行边界和验收方式的准则。
-本分支为**规则库本体**，只含 Markdown 规则与参考，不含 Skill 实现。
+**Language:** [English](README.md) | [中文](README.zh-CN.md)
 
-## 设计原则
+A versioned, personal set of domain rules for AI agents. It does not duplicate full manuals; it distills the guidelines that consistently shape judgment, execution boundaries, and acceptance standards.
+This branch is the **rule base itself** — Markdown rules and references only, no Skill implementations.
 
-- **入口简洁**：`AGENTS.md` 只负责作用域、优先级、路由和跨领域边界。
-- **领域分离**：数学、LaTeX、编码和书库任务由独立框架主导。
-- **按需加载**：教程、命令、案例和软件细节放入 `references/` 或 `evals/`；`references/manifest.md` 提供加载索引。
-- **单一事实来源**：外部 Skill 或官方文档已有的易变信息，不在本库重复维护。
-- **风险可控**：危险操作先核对目标和恢复方式，验证与任务风险相称。
-- **可演化**：规则使用 Git 管理，但历史状态和命令细节不进入行为入口。
+## Design Principles
 
-## 目录结构
+- **Simple entry**: `AGENTS.md` handles only scope, priority, routing, and cross-domain boundaries.
+- **Domain separation**: math, LaTeX, coding, and e-book library tasks are led by independent frameworks.
+- **On-demand loading**: tutorials, commands, cases, and software details live in `references/` or `evals/`; `references/manifest.md` provides the loading index.
+- **Single source of truth**: volatile info already covered by external Skills or official docs is not re-maintained here.
+- **Risk-aware**: dangerous operations require verifying targets and recovery paths first; validation scales with task risk.
+- **Evolvable**: rules are Git-managed, but historical states and command details stay out of the behavioral entry point.
+
+## Directory Structure
 
 ```text
 Agent Rules/
-├── AGENTS.md              # 总入口：激活、路由、通用行为和风险边界
-├── 数学工作者.md          # 数学推导、证明、验证与知识沉淀
-├── Latex排版助手.md       # LaTeX 工程、安全编辑、编译与验收
-├── Calibre书库管理.md     # 电子书库、元数据和批量写入
-├── Coder.md               # 编码与 Codex 能力路由
-├── GitHub操作手册.md      # 本规则库的 Git/GitHub 维护流程
-├── references/            # 按任务读取的稳定方法和领域细节
-│   ├── manifest.md        # 加载索引：常驻纪律与按需参考的挂载清单
-│   ├── math/              # 数学领域细分参考（rigor/workflows/numerics 等）
-│   └── latex/             # LaTeX 细分参考（compile/typography/safe-editing 等）
-└── evals/                 # 路由、边界和领域行为回归案例
+├── AGENTS.md              # Main entry: activation, routing, general behavior, risk boundaries
+├── 数学工作者.md          # Math derivation, proof, validation, knowledge capture
+├── Latex排版助手.md       # LaTeX projects, safe editing, compilation, acceptance
+├── Calibre书库管理.md     # E-book library, metadata, batch writing
+├── Coder.md               # Coding and Codex capability routing
+├── GitHub操作手册.md      # Git/GitHub maintenance workflows for this rule base
+├── references/            # Stable methods and domain details read on demand
+│   ├── manifest.md        # Loading index: resident vs on-demand reference manifest
+│   ├── math/              # Math sub-references (rigor/workflows/numerics, etc.)
+│   └── latex/             # LaTeX sub-references (compile/typography/safe-editing, etc.)
+└── evals/                 # Routing, boundary, and domain behavior regression cases
 ```
 
-## 使用方式
+## Usage
 
-1. 用户显式指定本目录或 `AGENTS.md` 后，先读取总入口；`AGENTS.md` 第三节与第四节为常驻纪律，任何任务命中即生效。
-2. 根据核心任务的触发指针选择一个主框架；混合任务只为明确子任务加载辅助框架。
-3. 通过 `references/manifest.md` 定位并按需读取与当前子任务相关的参考资料，不加载无关模块。
-4. 按框架的最低验收标准报告结果、不确定性和残余风险。
+1. After the user explicitly points at this directory or `AGENTS.md`, read the main entry first; sections 3 and 4 of `AGENTS.md` are resident discipline and apply to any matched task.
+2. Pick one main framework by the task's core correctness trigger pointer; mixed tasks load auxiliary frameworks only for their scoped sub-tasks.
+3. Use `references/manifest.md` to locate and read only the references relevant to the current sub-task.
+4. Report results, uncertainties, and residual risk against the framework's minimum acceptance standard.
 
-## 回归验证
+## Regression Verification
 
-改动路由表、触发指针或任一领域框架的安全/验收边界后，重跑 `evals/` 对应用例（路由见 `routing-cases.md`，安全边界见 `safety-cases.md`），确保行为未漂移。
+After changing the routing table, trigger pointers, or any domain framework's safety/acceptance boundary, re-run the corresponding `evals/` cases (routing: `routing-cases.md`; safety: `safety-cases.md`) to ensure behavior has not drifted.
 
-## 与 Skill 分支的关系
+## Relationship with the Skills Branch
 
-四领域 Skill（math/latex/coder/calibre）已拆分至主分支 `Skill`，本分支专注规则库本体的版本化管理。两边共用同一套领域边界与验收标准，但内容互不干涉。
+The four domain Skills (math/latex/coder/calibre) live on the main branch `skill-trae`; this branch focuses on versioned management of the rule base itself. Both sides share the same domain boundaries and acceptance standards, but their content does not interfere.
