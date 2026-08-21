@@ -1,6 +1,7 @@
 # Agent Rules — 个人领域行为准则库
 
 这是一套面向 AI Agent 的、可版本化的个人领域规则。它不复制完整操作手册，而是沉淀会长期影响判断、执行边界和验收方式的准则。
+本分支为**规则库本体**，只含 Markdown 规则与参考，不含 Skill 实现。
 
 ## 设计原则
 
@@ -25,13 +26,7 @@ Agent Rules/
 │   ├── manifest.md        # 加载索引：常驻纪律与按需参考的挂载清单
 │   ├── math/              # 数学领域细分参考（rigor/workflows/numerics 等）
 │   └── latex/             # LaTeX 细分参考（compile/typography/safe-editing 等）
-├── evals/                 # 路由、边界和领域行为回归案例
-└── skills/                # 四领域独立 skill（math/latex/coder/calibre）
-    ├── math/              # SKILL.md + references + evals
-    ├── latex/             # SKILL.md + references + evals
-    ├── coder/             # SKILL.md + references + GitHub操作手册
-    └── calibre/           # SKILL.md
-
+└── evals/                 # 路由、边界和领域行为回归案例
 ```
 
 ## 使用方式
@@ -45,10 +40,6 @@ Agent Rules/
 
 改动路由表、触发指针或任一领域框架的安全/验收边界后，重跑 `evals/` 对应用例（路由见 `routing-cases.md`，安全边界见 `safety-cases.md`），确保行为未漂移。
 
-## Skills
+## 与 Skill 分支的关系
 
-`skills/` 下是与规则库同源的独立可加载 Skill（math/latex/coder/calibre），
-按 `SKILL.md` 的 description 自动触发。规则库本体（AGENTS + 领域框架）
-负责路由与边界，Skill 承载可复用纪律；两者共用同一套领域边界与验收标准。
-
-本目录的 frontmatter 是个人规则协议，不是 Codex 原生 Skill 的系统触发接口。真正的 Skill 仍以其当前 `SKILL.md` 为执行规范。
+四领域 Skill（math/latex/coder/calibre）已拆分至主分支 `Skill`，本分支专注规则库本体的版本化管理。两边共用同一套领域边界与验收标准，但内容互不干涉。
