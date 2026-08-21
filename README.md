@@ -22,7 +22,13 @@ Agent Rules/
 ├── Coder.md               # 编码与 Codex 能力路由
 ├── GitHub操作手册.md      # 本规则库的 Git/GitHub 维护流程
 ├── references/            # 按任务读取的稳定方法和领域细节
-└── evals/                 # 路由、边界和领域行为回归案例
+├── evals/                 # 路由、边界和领域行为回归案例
+└── skills/                # 四领域独立 skill（math/latex/coder/calibre）
+    ├── math/              # SKILL.md + references + evals
+    ├── latex/             # SKILL.md + references + evals
+    ├── coder/             # SKILL.md + references + GitHub操作手册
+    └── calibre/           # SKILL.md
+
 ```
 
 ## 使用方式
@@ -31,5 +37,11 @@ Agent Rules/
 2. 根据核心任务选择一个主框架；混合任务只为明确子任务加载辅助框架。
 3. 只读取框架路由表中与当前任务相关的参考资料。
 4. 按框架的最低验收标准报告结果、不确定性和残余风险。
+
+## Skills
+
+`skills/` 下是与规则库同源的独立可加载 Skill（math/latex/coder/calibre），
+按 `SKILL.md` 的 description 自动触发。规则库本体（AGENTS + 领域框架）
+负责路由与边界，Skill 承载可复用纪律；两者共用同一套领域边界与验收标准。
 
 本目录的 frontmatter 是个人规则协议，不是 Codex 原生 Skill 的系统触发接口。真正的 Skill 仍以其当前 `SKILL.md` 为执行规范。
